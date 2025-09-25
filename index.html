@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YeastFuel — GORDITAS | Biocombustible sostenible</title>
+  <meta name="description" content="YeastFuel: optimización de Saccharomyces cerevisiae para producción eficiente y sostenible de biocombustibles a partir de azúcares residuales." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fffef6;
+      --accent:#ff6b6b;
+      --accent2:#ffd166;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(120deg,#f7fff7 0%, #fffef6 50%, #fff9f2 100%);font-family:Montserrat, system-ui, -apple-system,"Segoe UI", Roboto, "Helvetica Neue", Arial; color:var(--ink);}
+
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));backdrop-filter: blur(6px);box-shadow:0 6px 18px rgba(15,23,42,0.06);}
+    .navwrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Patrick Hand',sans-serif;font-size:20px;box-shadow:0 6px 18px rgba(255,107,107,0.18);}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav ul{display:flex;gap:10px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600}
+    nav a:hover{background:rgba(0,0,0,0.04)}
+
+    .hero{max-width:1100px;margin:26px auto;padding:26px;border-radius:18px;display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:center}
+    .hero .card{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));padding:24px;border-radius:16px;box-shadow: 0 10px 30px rgba(15,23,42,0.06);}
+    h2{font-family:'Patrick Hand', cursive;font-size:34px;margin:0}
+    .lede{margin:14px 0;color:var(--muted)}
+    .cta{display:flex;gap:10px;margin-top:14px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none;box-shadow:0 8px 20px rgba(255,107,107,0.18)}
+    .btn.secondary{background:transparent;border:2px dashed var(--accent2);color:var(--ink);font-weight:700}
+
+    .scribble{position:absolute;right:4px;top:70px;opacity:0.15;transform:rotate(6deg)}
+
+    main{max-width:1100px;margin:12px auto;padding:12px}
+    section{margin:18px 0}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    .card.module{padding:18px;border-radius:12px;background:var(--card);box-shadow:0 8px 24px rgba(15,23,42,0.04);position:relative;overflow:hidden}
+    .module h3{margin:0 0 8px 0;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+
+    .parts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .part{display:flex;gap:10px;align-items:flex-start}
+    .dot{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent2),#fff7e6);display:flex;align-items:center;justify-content:center;font-family:'Patrick Hand';font-weight:700}
+
+    .plasmid{background:linear-gradient(90deg,#fff 0,#fffef0 100%);border-radius:12px;padding:12px;border:2px dashed rgba(0,0,0,0.04)}
+    .plasmid img{width:100%;border-radius:8px}
+
+    .ethics{background:linear-gradient(180deg, rgba(255,217,217,0.4), rgba(255,255,255,0.5));padding:18px;border-radius:12px}
+
+    footer{max-width:1100px;margin:26px auto;padding:20px;border-top:1px dashed rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
+
+    .floaty{animation:floaty 6s ease-in-out infinite}
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    .pulse{animation:pulse 2.6s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+    @media(max-width:900px){.hero{grid-template-columns:1fr;}.grid2{grid-template-columns:1fr}.navwrap{padding:12px}.brand h1{font-size:16px}}
+
+    .doodlebg{position:fixed;left:-40px;bottom:-20px;z-index:-1;opacity:0.08}
+
+    nav a.active{background:linear-gradient(90deg,rgba(255,107,107,0.12),rgba(255,209,102,0.12));}
+
+    .timeline{display:flex;gap:12px;align-items:flex-start}
+    .step{background:var(--glass);padding:12px;border-radius:10px;border:1px dashed rgba(0,0,0,0.03)}
+
+    .team{display:flex;gap:12px;align-items:center}
+    .avatar{width:74px;height:74px;border-radius:12px;background:linear-gradient(135deg,#ffffff,#fff8f2);display:flex;align-items:center;justify-content:center;font-weight:700}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="navwrap">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div>
+        <h1>YeastFuel — GORDITAS</h1>
+        <p class="muted">Levaduras modificadas para biocombustible sostenible</p>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#home" class="navlink">Inicio</a></li>
+        <li><a href="#design" class="navlink">Diseño genético</a></li>
+        <li><a href="#results" class="navlink">Resultados</a></li>
+        <li><a href="#ethics" class="navlink">Ética</a></li>
+        <li><a href="#team" class="navlink">Equipo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<svg class="scribble" width="220" height="120" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 60 C40 0, 80 120, 160 60" stroke="#FF6B6B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+</svg>
+
+<main>
+  <section id="home" class="hero">
+    <div class="card">
+      <h2 class="floaty">YeastFuel — Optimización de <em>Saccharomyces cerevisiae</em> para biocombustibles</h2>
+      <p class="lede">Proyecto iGEM — Equipo <strong>GORDITAS</strong>. Convertimos residuos azucarados locales en energía renovable mediante ingeniería metabólica en levaduras. Prototipo orientado a pequeñas plantas piloto y cooperativas.</p>
+
+      <div class="cta">
+        <a class="btn" href="#design">Ver diseño genético</a>
+        <a class="btn secondary" href="#ethics">Impacto ético</a>
+      </div>
+    </div>
+
+    <div style="position:relative">
+      <div class="card plasmid pulse">
+        <h3 style="font-family:'Patrick Hand';margin-top:0">Mapa plasmídico (Benchling)</h3>
+        <img src="imagenes/plasmid.jpg.jpg" alt="Mapa plasmídico YeastFuel" />
+        <p style="margin:8px 0 0 0;font-size:13px" class="muted">(Imagen exportada desde Benchling)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design -->
+  <section id="design">
+    <div class="grid2">
+      <div class="card module">
+        <h3>Diseño genético — visión general</h3>
+        <p class="muted">Ruta A (Etanol): potenciar flujo glucolítico → piruvato → etanol. Ruta B (Biodiésel): redirigir acetil-CoA hacia síntesis de ácidos grasos y ésteres.</p>
+        <h4 style="margin-top:12px">Módulos propuestos</h4>
+        <div class="parts">
+          <div class="part"><div class="dot">1</div><div><strong>PDC1 / ADH1</strong><div class="muted">Conversión a etanol.</div></div></div>
+          <div class="part"><div class="dot">2</div><div><strong>ACC1 / FAS1-FAS2</strong><div class="muted">Síntesis de ácidos grasos.</div></div></div>
+          <div class="part"><div class="dot">3</div><div><strong>WS/DGAT</strong><div class="muted">Producción de ésteres.</div></div></div>
+          <div class="part"><div class="dot">4</div><div><strong>Transportadores HXT</strong><div class="muted">Mejor captación de azúcares.</div></div></div>
+        </div>
+      </div>
+
+      <div class="card module">
+        <h3>Trabajo final — Unidad 4: Proyecto iGEM</h3>
+        <p class="muted">Instrucciones principales para el desarrollo del proyecto:</p>
+
+        <h4>a) Área de estudio y planteamiento del problema</h4>
+        <p class="muted">Explicar la problemática, justificar su importancia y responder: ¿Cuál es el problema? ¿Por qué buscar una solución? ¿Qué pretendo solucionar?</p>
+
+        <h4>b) Diseño genético y ensamblaje</h4>
+        <p class="muted">Mostrar partes biológicas y plásmido desde Benchling. Incluir imagen del organismo usado y describir sus características.</p>
+        <p class="muted">👉 Link Benchling: <a href="https://benchling.com/s/etr-Dz36SfeOFAOV5S1WjiCp?m=slm-uYpTsSSD2uG9KTmLcoR0" target="_blank">Ver mapa</a></p>
+
+        <h4>c) Posibles resultados esperados</h4>
+        <p class="muted">Describir qué se espera lograr con la construcción. Responder: ¿Qué quiero conseguir? ¿Qué espero que produzca la bacteria?</p>
+
+        <h4>d) Impacto ético y social</h4>
+        <p class="muted">Crítica constructiva sobre la ética de la Biología Sintética o el impacto social del proyecto, basada en hechos científicos.</p>
+
+        <h4>e) Página web</h4>
+        <p class="muted">Debe incluir toda la información de los apartados anteriores, imágenes, gráficos y fotos del equipo.</p>
+
+        <p class="muted"><strong>Presentación:</strong> Jueves 02/10/2025 — cada apartado vale 20 puntos (total: 100).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="results">
+    <div class="grid2">
+      <div class="card module">
+        <h3>Resultados esperados</h3>
+        <ul class="muted">
+          <li>Mayor rendimiento de etanol por azúcar.</li>
+          <li>Tolerancia aumentada al etanol.</li>
+          <li>Producción de lípidos o biodiésel.</li>
+          <li>Señales de reporter para validar expresión.</li>
+        </ul>
+      </div>
+
+      <div class="card module">
+        <h3>Plan de escalado</h3>
+        <div class="timeline">
+          <div class="step"><strong>Diseño</strong><div class="muted">Mapeo in silico.</div></div>
+          <div class="step"><strong>Prototipo</strong><div class="muted">Ensayos en laboratorio.</div></div>
+          <div class="step"><strong>Piloto</strong><div class="muted">Planta local con residuos.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ethics -->
+  <section id="ethics">
+    <div class="card module ethics">
+      <h3>Impacto ético y social</h3>
+      <ul>
+        <li><strong>Biosafety:</strong> Procesos en contención, cepas seguras.</li>
+        <li><strong>Sustratos:</strong> Uso de residuos, no alimentos.</li>
+        <li><strong>Participación:</strong> Involucrar comunidades locales.</li>
+        <li><strong>Sostenibilidad:</strong> Análisis de ciclo de vida.</li>
+        <li><strong>Regulación:</strong> Cumplimiento normativo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <div class="card module">
+      <h3>Equipo GORDITAS</h3>
+      <div class="team"><div class="avatar">JB</div><div><strong>Balderrama Pérez Jose Manuel</strong><div class="muted">Coordinador</div></div></div>
+      <div class="team"><div class="avatar">AM</div><div><strong>Hinojosa Martínez Alejandro Pablo</strong><div class="muted">Metabolismo</div></div></div>
+      <div class="team"><div class="avatar">AV</div><div><strong>Alejandro Javier Villalobos Daza</strong><div class="muted">Benchling</div></div></div>
+      <div class="team"><div class="avatar">AS</div><div><strong>Álvaro Fernando Santi Moral</strong><div class="muted">Web</div></div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="muted">© 2025 YeastFuel — Equipo GORDITAS. Proyecto educativo iGEM.</div>
+  <div><a class="muted" href="#home">Volver arriba</a></div>
+</footer>
+
+<script>
+  document.querySelectorAll('.navlink').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = a.getAttribute('href').replace('#','');
+      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+    })
+  })
+
+  const sections = document.querySelectorAll('main section');
+  window.addEventListener('scroll', ()=>{
+    let idx = 0;
+    sections.forEach((sec,i)=>{
+      const rect = sec.getBoundingClientRect();
+      if(rect.top < window.innerHeight/3) idx = i;
+    });
+    document.querySelectorAll('nav a').forEach((a)=>a.classList.remove('active'));
+    const active = document.querySelectorAll('nav a')[idx];
+    if(active) active.classList.add('active');
+  })
+
+  const logo = document.querySelector('.logo');
+  logo.addEventListener('click',(e)=>{
+    for(let i=0;i<16;i++){
+      const p = document.createElement('div');
+      p.style.position='fixed';p.style.left=(e.clientX)+'px';p.style.top=(e.clientY)+'px';
+      p.style.width='8px';p.style.height='8px';p.style.borderRadius='3px';
+      p.style.background=['#FF6B']
+    }})
