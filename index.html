@@ -25,7 +25,7 @@
     header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));backdrop-filter: blur(6px);box-shadow:0 6px 18px rgba(15,23,42,0.06);}
     .navwrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Patrick Hand',sans-serif;font-size:20px;box-shadow:0 6px 18px rgba(255,107,107,0.18);}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Patrick Hand',sans-serif;font-size:20px;box-shadow:0 6px 18px rgba(255,107,107,0.18);cursor:pointer;}
     .brand h1{margin:0;font-size:18px}
     .brand p{margin:0;font-size:12px;color:var(--muted)}
 
@@ -78,6 +78,13 @@
 
     .team{display:flex;gap:12px;align-items:center}
     .avatar{width:74px;height:74px;border-radius:12px;background:linear-gradient(135deg,#ffffff,#fff8f2);display:flex;align-items:center;justify-content:center;font-weight:700}
+
+    /* Quiz styles */
+    .quiz-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));box-shadow:0 10px 30px rgba(15,23,42,0.05)}
+    .question{margin-bottom:12px}
+    .options{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+    .result{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,0.98),rgba(255,255,255,0.92));border:1px dashed rgba(0,0,0,0.04)}
+    .smallmuted{font-size:13px;color:var(--muted)}
   </style>
 </head>
 <body>
@@ -85,7 +92,7 @@
 <header>
   <div class="navwrap">
     <div class="brand">
-      <div class="logo">G</div>
+      <div class="logo" title="Haz clic para sorpresa">G</div>
       <div>
         <h1>YeastFuel — GORDITAS</h1>
         <p class="muted">Levaduras modificadas para biocombustible sostenible</p>
@@ -99,6 +106,7 @@
         <li><a href="#results" class="navlink">Resultados</a></li>
         <li><a href="#ethics" class="navlink">Ética</a></li>
         <li><a href="#team" class="navlink">Equipo</a></li>
+        <li><a href="#quiz" class="navlink">Quiz</a></li>
       </ul>
     </nav>
   </div>
@@ -123,7 +131,7 @@
     <div style="position:relative">
       <div class="card plasmid pulse">
         <h3 style="font-family:'Patrick Hand';margin-top:0">Mapa plasmídico (Benchling)</h3>
-        <img src="plasmid.jpg.jpg" alt="Mapa plasmídico YeastFuel" />
+        <img src="imagenes/plasmid.jpg.jpg" alt="Mapa plasmídico YeastFuel" onerror="this.src='https://via.placeholder.com/420x220?text=Mapa+plasm%C3%ADdico'"/>
         <p style="margin:8px 0 0 0;font-size:13px" class="muted">(Imagen exportada desde Benchling)</p>
       </div>
     </div>
@@ -153,7 +161,7 @@
 
         <h4>b) Diseño genético y ensamblaje</h4>
         <p class="muted">Mostrar partes biológicas y plásmido desde Benchling. Incluir imagen del organismo usado y describir sus características.</p>
-        <p class="muted">👉 Link Benchling: <a href="https://benchling.com/s/etr-Dz36SfeOFAOV5S1WjiCp?m=slm-uYpTsSSD2uG9KTmLcoR0" target="_blank">Ver mapa</a></p>
+        <p class="muted">👉 Link Benchling: <a href="https://benchling.com/s/etr-Dz36SfeOFAOV5S1WjiCp?m=slm-uYpTsSSD2uG9KTmLcoR0" target="_blank" rel="noopener">Ver mapa</a></p>
 
         <h4>c) Posibles resultados esperados</h4>
         <p class="muted">Describir qué se espera lograr con la construcción. Responder: ¿Qué quiero conseguir? ¿Qué espero que produzca la bacteria?</p>
@@ -217,6 +225,45 @@
       <div class="team"><div class="avatar">AS</div><div><strong>Álvaro Fernando Santi Moral</strong><div class="muted">Web</div></div></div>
     </div>
   </section>
+
+  <!-- Quiz -->
+  <section id="quiz">
+    <div class="card module quiz-card">
+      <h3>Quiz interactivo — Preguntas del equipo</h3>
+      <p class="smallmuted">Contesta estas preguntas durante la presentación. Las respuestas se envían localmente y se muestran sin corrección (sin respuestas correctas visibles).</p>
+
+      <form id="quizForm" aria-labelledby="quizQuestions">
+        <div class="question" id="q1">
+          <label><strong>1. ¿Qué organismo usamos como hospedador para producir etanol y biodiésel en el proyecto YeastFuel?</strong></label>
+          <div class="options" role="radiogroup" aria-labelledby="q1">
+            <label><input type="radio" name="q1" value="Escherichia coli"> Escherichia coli</label>
+            <label><input type="radio" name="q1" value="Saccharomyces cerevisiae"> Saccharomyces cerevisiae</label>
+            <label><input type="radio" name="q1" value="Bacillus subtilis"> Bacillus subtilis</label>
+            <label><input type="radio" name="q1" value="Pseudomonas aeruginosa"> Pseudomonas aeruginosa</label>
+          </div>
+        </div>
+
+        <div class="question" id="q2">
+          <label><strong>2. ¿Qué residuos agrícolas de Bolivia se proponen aprovechar como materia prima en el proyecto?</strong></label>
+          <div class="options" role="radiogroup" aria-labelledby="q2">
+            <label><input type="radio" name="q2" value="Papa y maíz"> Papa y maíz</label>
+            <label><input type="radio" name="q2" value="Soja y quinua"> Soja y quinua</label>
+            <label><input type="radio" name="q2" value="Melaza y bagazo"> Melaza y bagazo</label>
+            <label><input type="radio" name="q2" value="Yuca y castaña"> Yuca y castaña</label>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Enviar respuestas</button>
+          <button type="button" id="resetQuiz" class="btn secondary">Reiniciar</button>
+          <div id="quizStatus" class="smallmuted" aria-live="polite" style="margin-left:8px"></div>
+        </div>
+      </form>
+
+      <div id="quizResult" class="result" style="display:none" aria-live="polite"></div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -225,14 +272,17 @@
 </footer>
 
 <script>
+  // Smooth nav scrolling
   document.querySelectorAll('.navlink').forEach(a=>{
     a.addEventListener('click', (e)=>{
       e.preventDefault();
       const id = a.getAttribute('href').replace('#','');
-      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
-    })
-  })
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
 
+  // Active nav on scroll
   const sections = document.querySelectorAll('main section');
   window.addEventListener('scroll', ()=>{
     let idx = 0;
@@ -243,14 +293,85 @@
     document.querySelectorAll('nav a').forEach((a)=>a.classList.remove('active'));
     const active = document.querySelectorAll('nav a')[idx];
     if(active) active.classList.add('active');
-  })
+  });
 
+  // Logo click: simple confetti dots
   const logo = document.querySelector('.logo');
   logo.addEventListener('click',(e)=>{
-    for(let i=0;i<16;i++){
+    const colors = ['#FF6B6B','#FFD166','#6BCB77','#4D96FF','#B06BF6'];
+    for(let i=0;i<18;i++){
       const p = document.createElement('div');
-      p.style.position='fixed';p.style.left=(e.clientX)+'px';p.style.top=(e.clientY)+'px';
-      p.style.width='8px';p.style.height='8px';p.style.borderRadius='3px';
-      p.style.background=['#FF6B']
+      const size = 8 + Math.random()*10;
+      p.style.position='fixed';
+      p.style.left=(e.clientX + (Math.random()-0.5)*120) + 'px';
+      p.style.top=(e.clientY + (Math.random()-0.5)*120) + 'px';
+      p.style.width=size+'px';
+      p.style.height=size+'px';
+      p.style.borderRadius='50%';
+      p.style.background=colors[Math.floor(Math.random()*colors.length)];
+      p.style.opacity='0.95';
+      p.style.pointerEvents='none';
+      p.style.transform='translateY(0) scale(1)';
+      p.style.transition='transform 900ms ease-out, opacity 900ms ease-out';
+      document.body.appendChild(p);
+      setTimeout(()=> {
+        p.style.transform = 'translateY(80px) scale(0.6)';
+        p.style.opacity = '0';
+      }, 10);
+      setTimeout(()=> document.body.removeChild(p), 950);
+    }
+  });
 
-    }})
+  // Quiz handling: show user's selected answers (no correction shown)
+  const quizForm = document.getElementById('quizForm');
+  const quizResult = document.getElementById('quizResult');
+  const quizStatus = document.getElementById('quizStatus');
+  const resetBtn = document.getElementById('resetQuiz');
+
+  quizForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    quizResult.style.display = 'none';
+    quizStatus.textContent = '';
+
+    // Collect answers
+    const formData = new FormData(quizForm);
+    const a1 = formData.get('q1');
+    const a2 = formData.get('q2');
+
+    // Basic validation
+    if(!a1 || !a2){
+      quizStatus.textContent = 'Por favor responde ambas preguntas antes de enviar.';
+      return;
+    }
+
+    // Display selected answers (sin indicar correcta/incorrecta)
+    quizResult.innerHTML = `
+      <strong>Respuestas enviadas:</strong>
+      <div style="margin-top:8px">
+        <div><strong>1.</strong> ${a1}</div>
+        <div><strong>2.</strong> ${a2}</div>
+      </div>
+      <p class="smallmuted" style="margin-top:10px">Gracias por responder. Las respuestas se muestran sólo para registro — no se muestran correcciones en esta página.</p>
+    `;
+    quizResult.style.display = 'block';
+    quizStatus.textContent = 'Respuestas enviadas ✔️';
+  });
+
+  resetBtn.addEventListener('click', function(){
+    quizForm.reset();
+    quizResult.style.display = 'none';
+    quizStatus.textContent = 'Quiz reiniciado.';
+    setTimeout(()=>quizStatus.textContent = '', 2000);
+  });
+
+  // Ensure keyboard focus support: when navigating to section via hash, focus it
+  window.addEventListener('hashchange', ()=>{
+    const id = location.hash.replace('#','');
+    const el = document.getElementById(id);
+    if(el) el.setAttribute('tabindex','-1'), el.focus();
+  });
+
+</script>
+
+</body>
+</html>
